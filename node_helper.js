@@ -33,7 +33,7 @@ module.exports = NodeHelper.create({
       "http://api.bilibili.com/x/web-interface/card?";
       // http://api.bilibili.com/x/space/acc/info?mid=543585954
     this.channelIds.forEach((channel) => {
-      this.url = this.url + "mid=" + channel.id;
+      this.url = this.url + "mid=" + parseInt(channel.id);
     });
     this.getData(this.url);
   },
