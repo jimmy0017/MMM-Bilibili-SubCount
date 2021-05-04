@@ -11,7 +11,7 @@ const fetch = require("node-fetch");
 module.exports = NodeHelper.create({
   start: function () {
     this.finalData = [];
-    this.channelId = [];
+    this.channelId = "";
     // this.apiKey = null;
   },
 
@@ -30,8 +30,7 @@ module.exports = NodeHelper.create({
 
   breakDownChannelIds: function () {
     this.url =
-      "http://api.bilibili.com/x/web-interface/card?";
-    this.url = this.url + "mid=" + this.channelId;
+      "http://api.bilibili.com/x/web-interface/card?mid=" + this.channelId;
     this.getData(this.url);
   },
 
