@@ -31,6 +31,7 @@ module.exports = NodeHelper.create({
   breakDownChannelIds: function () {
     this.url =
       "http://api.bilibili.com/x/web-interface/card?mid=" + this.channelId;
+    Log.log(this.url);
     this.getData(this.url);
   },
 
