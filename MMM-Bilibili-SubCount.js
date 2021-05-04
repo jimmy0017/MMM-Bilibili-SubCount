@@ -74,7 +74,7 @@ Module.register("MMM-Bilibili-SubCount", {
           section.id = "MMM-Bilibili-SubCount-container";
 
           var img = document.createElement("div");
-          img.innerHTML = `<img src="${item.data.card.face}" width="180" height="180">`;
+          img.innerHTML = `<img src="${item.data.card.face}" width="88" height="88">`;
           section.appendChild(img);
 
           var content = document.createElement("div");
@@ -86,7 +86,7 @@ Module.register("MMM-Bilibili-SubCount", {
 
           var count = document.createElement("div");
           count.id = "MMM-Bilibili-SubCount-count";
-          count.innerHTML = `<p class="mdi mdi-bilibili">${this.numFormatter(
+          count.innerHTML = `<p class="mdi mdi-bilibili"><span class="iconify" data-icon="simple-icons:bilibili" data-inline="false"></span>${this.numFormatter(
             item.data.follower
           )}`;
 
@@ -115,7 +115,9 @@ Module.register("MMM-Bilibili-SubCount", {
   },
 
   getScripts: function () {
-    return [];
+    return [
+    "https://code.iconify.design/1/1.0.7/iconify.min.js"
+    ];
   },
 
   getStyles: function () {
