@@ -1,8 +1,8 @@
 {
-  "name": "MMM-YT-SubCount",
+  "name": "MMM-Bilibili-SubCount",
   "version": "1.0.0",
   "description": "MagicMirror Module - Show the subscription from a Youtube Channel on the MagicMirror",
-  "main": "MMM-YT-SubCount.js",
+  "main": "MMM-Bilibili-SubCount.js",
   "author": "Cedrik Hoffmann",
   "license": "MIT",
   "scripts": {
@@ -39,10 +39,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ianperrin/MMM-YT-SubCount.git"
+    "url": "git+https://github.com/jimmy0017/MMM-Bilibili-SubCount.git"
   },
   "bugs": {
-    "url": "https://github.com/ianperrin/MMM-YT-SubCount/issues"
+    "url": "https://github.com/jimmy0017/MMM-Bilibili-SubCount/issues"
   },
   "dependencies": {
     "node-fetch": "^2.6.1"

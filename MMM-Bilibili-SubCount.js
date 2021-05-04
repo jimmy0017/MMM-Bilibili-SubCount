@@ -1,13 +1,13 @@
 /* Magic Mirror
- * Module: MMM-YT-SubCount
+ * Module: MMM-Bilibili-SubCount
  *
- * By Cedrik Hoffmann (https://github.com/choffmann)
+ * By Jimmy Lin (https://github.com/jimmy0017)
  * MIT Licensed.
  */
 
-Module.register("MMM-YT-SubCount", {
+Module.register("MMM-Bilibili-SubCount", {
   defaults: {
-    apiKey: "",
+    // apiKey: "",
     channelIds: [
       {
         id: ""
@@ -24,7 +24,7 @@ Module.register("MMM-YT-SubCount", {
     this.finalPayload = [];
 
     // Schedule update timer.
-    this.sendSocketNotification("MMM-YT-SubCount-HERE_IS_CONFIG", this.config);
+    this.sendSocketNotification("MMM-Bilibili-SubCount-HERE_IS_CONFIG", this.config);
     setInterval(function () {
       self.updateDom();
     }, this.config.updateInterval);
@@ -34,27 +34,27 @@ Module.register("MMM-YT-SubCount", {
     var self = this;
 
     var wrapper = document.createElement("div");
-    wrapper.id = "MMM-YT-SubCount-root";
+    wrapper.id = "MMM-Bilibili-SubCount-root";
     if (this.finalPayload !== undefined) {
       this.finalPayload.items.forEach((item) => {
         var section = document.createElement("div");
-        section.id = "MMM-YT-SubCount-container";
+        section.id = "MMM-Bilibili-SubCount-container";
 
         var img = document.createElement("div");
-        img.innerHTML = `<img src="${item.snippet.thumbnails.default.url}" width="${item.snippet.thumbnails.default.width}" height="${item.snippet.thumbnails.default.height}">`;
+        img.innerHTML = `<img src="${item.data.card.face}" width="180" height="180">`;
         section.appendChild(img);
 
         var content = document.createElement("div");
-        content.id = "MMM-YT-SubCount-content";
+        content.id = "MMM-Bilibili-SubCount-content";
 
         var title = document.createElement("p");
-        title.id = "MMM-YT-SubCount-title";
-        title.innerText = `${item.snippet.title}`;
+        title.id = "MMM-Bilibili-SubCount-title";
+        title.innerText = `${item.data.card.name}`;
 
         var count = document.createElement("div");
-        count.id = "MMM-YT-SubCount-count";
-        count.innerHTML = `<p class="mdi mdi-youtube">${this.numFormatter(
-          item.statistics.subscriberCount
+        count.id = "MMM-Bilibili-SubCount-count";
+        count.innerHTML = `<p class="mdi mdi-bilibili">${this.numFormatter(
+          item.data.follower
         )}`;
 
         if (!this.config.showChannelImg) {
@@ -87,7 +87,7 @@ Module.register("MMM-YT-SubCount", {
 
   getStyles: function () {
     return [
-      "MMM-YT-SubCount.css",
+      "MMM-Bilibili-SubCount.css",
       "https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css"
     ];
   },
@@ -103,7 +103,7 @@ Module.register("MMM-YT-SubCount", {
 
   // socketNotificationReceived from helper
   socketNotificationReceived: function (notification, payload) {
-    if (notification === "MMM-YT-SubCount-DATA_IS_READY") {
+    if (notification === "MMM-Bilibili-SubCount-DATA_IS_READY") {
       this.finalPayload = payload;
       this.updateDom();
     }
