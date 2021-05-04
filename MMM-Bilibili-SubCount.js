@@ -36,36 +36,69 @@ Module.register("MMM-Bilibili-SubCount", {
     var wrapper = document.createElement("div");
     wrapper.id = "MMM-Bilibili-SubCount-root";
     if (this.finalPayload !== undefined) {
-      this.finalPayload.items.forEach((item) => {
+      Log.log(this.finalPayload);
+      if (this.finalPayload.items !== undefined) {
+        this.finalPayload.items.forEach((item) => {
+          var section = document.createElement("div");
+          section.id = "MMM-Bilibili-SubCount-container";
+
+          var img = document.createElement("div");
+          img.innerHTML = `<img src="${item.data.card.face}" width="180" height="180">`;
+          section.appendChild(img);
+
+          var content = document.createElement("div");
+          content.id = "MMM-Bilibili-SubCount-content";
+
+          var title = document.createElement("p");
+          title.id = "MMM-Bilibili-SubCount-title";
+          title.innerText = `${item.data.card.name}`;
+
+          var count = document.createElement("div");
+          count.id = "MMM-Bilibili-SubCount-count";
+          count.innerHTML = `<p class="mdi mdi-bilibili">${this.numFormatter(
+            item.data.follower
+          )}`;
+
+          if (!this.config.showChannelImg) {
+            img.style.visibility = "hidden";
+          }
+
+          content.appendChild(title);
+          content.appendChild(count);
+          section.appendChild(content);
+          wrapper.appendChild(section);
+        });
+      }else{
+        item = this.finalPayload;
         var section = document.createElement("div");
-        section.id = "MMM-Bilibili-SubCount-container";
+          section.id = "MMM-Bilibili-SubCount-container";
 
-        var img = document.createElement("div");
-        img.innerHTML = `<img src="${item.data.card.face}" width="180" height="180">`;
-        section.appendChild(img);
+          var img = document.createElement("div");
+          img.innerHTML = `<img src="${item.data.card.face}" width="180" height="180">`;
+          section.appendChild(img);
 
-        var content = document.createElement("div");
-        content.id = "MMM-Bilibili-SubCount-content";
+          var content = document.createElement("div");
+          content.id = "MMM-Bilibili-SubCount-content";
 
-        var title = document.createElement("p");
-        title.id = "MMM-Bilibili-SubCount-title";
-        title.innerText = `${item.data.card.name}`;
+          var title = document.createElement("p");
+          title.id = "MMM-Bilibili-SubCount-title";
+          title.innerText = `${item.data.card.name}`;
 
-        var count = document.createElement("div");
-        count.id = "MMM-Bilibili-SubCount-count";
-        count.innerHTML = `<p class="mdi mdi-bilibili">${this.numFormatter(
-          item.data.follower
-        )}`;
+          var count = document.createElement("div");
+          count.id = "MMM-Bilibili-SubCount-count";
+          count.innerHTML = `<p class="mdi mdi-bilibili">${this.numFormatter(
+            item.data.follower
+          )}`;
 
-        if (!this.config.showChannelImg) {
-          img.style.visibility = "hidden";
-        }
+          if (!this.config.showChannelImg) {
+            img.style.visibility = "hidden";
+          }
 
-        content.appendChild(title);
-        content.appendChild(count);
-        section.appendChild(content);
-        wrapper.appendChild(section);
-      });
+          content.appendChild(title);
+          content.appendChild(count);
+          section.appendChild(content);
+          wrapper.appendChild(section);
+      }
     }
 
     return wrapper;
