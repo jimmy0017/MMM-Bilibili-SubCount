@@ -1,9 +1,9 @@
 {
   "name": "MMM-Bilibili-SubCount",
   "version": "1.0.0",
-  "description": "MagicMirror Module - Show the subscription from a Youtube Channel on the MagicMirror",
+  "description": "MagicMirror Module - Show the subscription from a Bilibili Channel on the MagicMirror",
   "main": "MMM-Bilibili-SubCount.js",
-  "author": "Cedrik Hoffmann",
+  "author": "Jimmy Lin",
   "license": "MIT",
   "scripts": {
     "test": "npm run test:prettier && npm run test:js && npm run test:css",
