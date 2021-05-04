@@ -11,7 +11,7 @@ const fetch = require("node-fetch");
 module.exports = NodeHelper.create({
   start: function () {
     this.finalData = [];
-    this.channelId = "";
+    this.channelId = null;
     // this.apiKey = null;
   },
 
@@ -19,7 +19,7 @@ module.exports = NodeHelper.create({
     switch (notification) {
       case "MMM-Bilibili-SubCount-HERE_IS_CONFIG":
         // this.apiKey = payload.apiKey;
-        this.channelIds = payload.channelIds;
+        this.channelId = payload.channelId;
         this.breakDownChannelIds();
         break;
       case "UPDATE_PLEASE":
